@@ -1,0 +1,12 @@
+#!/bin/bash
+ID="$USERNAME@$USERDOMAIN;$USERPROFILE;$(cygpath -w /)"
+IDF=/portable-cygwin/session-id
+if [ "$ID" != "$(cat "$IDF")" ]; then
+echo - > "$IDF"
+echo writing /etc/passwd
+mkpasswd -l -c | sed -r 's/\:\/home\/[^:]*\:/\:\/home\:/' > /etc/passwd
+echo writing /etc/group
+mkgroup -l -c > /etc/group
+echo setting up special paths in background
+(/portable-cygwin/setup-special-paths; echo "$ID" > "$IDF";) &
+fi

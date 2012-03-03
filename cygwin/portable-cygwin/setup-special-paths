@@ -1,0 +1,11 @@
+#!/bin/bash
+function rmln () { [ -h "$1" ] && rm "$1"; [ -e "$1" ] || ln -s "$(cygpath -u "$2")" "$1"; }
+mkdir -p "/portable-cygwin/links"
+cscript /nologo "$(cygpath -w "/portable-cygwin/setup-special-paths.vbs")"|
+iconv -f "CP$(cat /portable-cygwin/session-chcp|sed -r 's/^[^0-9]*//')" -t "$(echo "$LANG"|sed -r 's/^.*\.//')"|
+sed -r 's/\r$//'|
+(cat;echo root;dirname "$(cygpath -w /)";)|
+while IFS="" read -r a;do
+IFS="" read -r b
+rmln "/portable-cygwin/links/$a" "$b"
+done

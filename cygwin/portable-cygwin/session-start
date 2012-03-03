@@ -1,0 +1,2 @@
+#!/bin/bash
+[ -e /bin/mintty.exe ] && cmd /c start mintty -s 120,50 - || bash --login -i
