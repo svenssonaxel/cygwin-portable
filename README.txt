@@ -12,10 +12,10 @@ Installation:
 
 - Make sure there are no spaces or other odd characters in the path to portable-cygwin.
 
-- Run Cygwin-portable-setup.bat to start the installation with the correct settings.
-  (The cygwinports repository is included in case you want something from there.)
+- Run Cygwin-portable-setup.bat to start the installation with correct settings.
 
-- Follow the guided installation process as usual.
+- Follow the guided installation process as usual, choosing any additional packages you want.
+  (The cygwinports repository is included in case you want something from there.)
 
 - Done!
 
@@ -26,7 +26,7 @@ Installation:
 Usage hints:
 
 - During install, cygwin\Cygwin.bat is created. It's not portable, so don't use it.
-  Instead, use Cygwin-portable.bat or cygwin\portable-cygwin\Cygwin.bat to start a shell.
+  Instead, use Cygwin-portable.bat to start a shell.
 
 - Your home directory is /home, not /home/username.
   This way you're always at home whoever you happen to be.
@@ -41,6 +41,8 @@ Usage hints:
   Installing windows services that depend on a drive you'll remove in a minute is usually not a good idea.
   However, since your cygwin install is portable, you could just copy it to get a local installation.
   To do this, close all cygwin processes and use the windows GUI to copy/paste.
+
+- Use Cygwin-portable-setup.bat to add/remove packages.
 
 - These files are safe to delete if you don't want them:
   - Cygwin-portable.bat (shortcut to cygwin\portable-cygwin\Cygwin.bat)
