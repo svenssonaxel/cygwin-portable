@@ -1,11 +1,67 @@
 #!/bin/bash
-function rmln () { [ -h "$1" ] && rm "$1"; [ -e "$1" ] || ln -s "$(cygpath -u "$2")" "$1"; }
-mkdir -p "/portable-cygwin/links"
-cscript /nologo "$(cygpath -w "/portable-cygwin/setup-special-paths.vbs")"|
-iconv -f "CP$(cat /portable-cygwin/session-chcp|sed -r 's/^[^0-9]*//')" -t "$(echo "$LANG"|sed -r 's/^.*\.//')"|
-sed -r 's/\r$//'|
-(cat;echo root;dirname "$(cygpath -w /)";)|
-while IFS="" read -r a;do
-IFS="" read -r b
-rmln "/portable-cygwin/links/$a" "$b"
-done
+l=/sf
+rm -rf $l /parent
+mkdir -p $l
+cd $l
+ln -s "$(cygpath -u "$(dirname "$(cygpath -w /)")")" /parent
+p () {
+t="$(cygpath -F $1 2> /dev/null)"
+if [ "$(echo "$t"|grep -Fc /)" == 1 -a '!' -e "$4" ]; then ln -s "$t" "$4"; fi
+}
+p 0 Desktop DESKTOP desktop
+p 1 InternetFolder INTERNET internet
+p 2 Programs PROGRAMS programs
+p 3 ControlPanelFolder CONTROLS controls
+p 4 PrintersFolder PRINTERS printers
+p 5 Documents MYDOCUMENTS mydocuments
+p 5 Documents PERSONAL personal
+p 6 Favorites FAVORITES favorites
+p 7 Startup STARTUP startup
+p 8 Recent RECENT recent
+p 9 SendTo SENDTO sendto
+p 10 RecycleBinFolder BITBUCKET bitbucket
+p 11 StartMenu STARTMENU startmenu
+p 13 Music MYMUSIC mymusic
+p 14 Videos MYVIDEO myvideo
+p 16 Desktop DESKTOPDIRECTORY desktopdirectory
+p 17 ComputerFolder DRIVES drives
+p 18 NetworkFolder NETWORK network
+p 19 NetHood NETHOOD nethood
+p 20 Fonts FONTS fonts
+p 21 Templates TEMPLATES templates
+p 22 CommonStartMenu COMMON_STARTMENU common_startmenu
+p 23 CommonPrograms COMMON_PROGRAMS common_programs
+p 24 CommonStartup COMMON_STARTUP common_startup
+p 25 PublicDesktop COMMON_DESKTOPDIRECTORY common_desktopdirectory
+p 26 RoamingAppData APPDATA appdata
+p 27 PrintHood PRINTHOOD printhood
+p 28 LocalAppData LOCAL_APPDATA local_appdata
+p 29 Startup ALTSTARTUP altstartup
+p 30 CommonStartup COMMON_ALTSTARTUP common_altstartup
+p 31 Favorites COMMON_FAVORITES common_favorites
+p 32 InternetCache INTERNET_CACHE internet_cache
+p 33 Cookies COOKIES cookies
+p 34 History HISTORY history
+p 35 ProgramData COMMON_APPDATA common_appdata
+p 36 Windows WINDOWS windows
+p 37 System SYSTEM system
+p 38 ProgramFiles PROGRAM_FILES program_files
+p 39 Pictures MYPICTURES mypictures
+p 40 Profile PROFILE profile
+p 41 SystemX86 SYSTEMX86 systemx86
+p 42 ProgramFilesX86 PROGRAM_FILESX86 program_filesx86
+p 43 ProgramFilesCommon PROGRAM_FILES_COMMON program_files_common
+p 44 ProgramFilesCommonX86 PROGRAM_FILES_COMMONX86 program_files_commonx86
+p 45 CommonTemplates COMMON_TEMPLATES common_templates
+p 46 PublicDocuments COMMON_DOCUMENTS common_documents
+p 47 CommonAdminTools COMMON_ADMINTOOLS common_admintools
+p 48 AdminTools ADMINTOOLS admintools
+p 49 ConnectionsFolder CONNECTIONS connections
+p 53 PublicMusic COMMON_MUSIC common_music
+p 54 PublicPictures COMMON_PICTURES common_pictures
+p 55 PublicVideos COMMON_VIDEO common_video
+p 56 ResourceDir RESOURCES resources
+p 57 LocalizedResourcesDir RESOURCES_LOCALIZED resources_localized
+p 58 CommonOEMLinks COMMON_OEM_LINKS common_oem_links
+p 59 CDBurning CDBURN_AREA cdburn_area
+p 61 NetworkFolder COMPUTERSNEARME computersnearme

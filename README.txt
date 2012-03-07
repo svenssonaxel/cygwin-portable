@@ -31,11 +31,12 @@ Usage hints:
 - Your home directory is /home, not /home/username.
   This way you're always at home whoever you happen to be.
 
-- The /portable-cygwin/links directory contains symbolic links to special paths on your windows box.
+- The /sf directory contains symbolic links to special folders on your windows box.
   They are updated automatically as you move around.
   You may want to link some of them from your home directory like this:
-   ln -s /portable-cygwin/links/desktop desktop
-   ln -s /portable-cygwin/links/root root
+   ln -s /sf/desktop desktop
+
+- The /parent symlink points to the parent of the cygwin install folder.
 
 - If you set up servers like sshd, be sure to know what you're doing.
   Installing windows services that depend on a drive you'll remove in a minute is usually not a good idea.
