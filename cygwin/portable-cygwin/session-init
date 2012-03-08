@@ -1,4 +1,5 @@
 #!/bin/bash
+PATH="/usr/bin:$PATH"
 ID="$USERNAME@$USERDOMAIN;$USERPROFILE;$(cygpath -w /)"
 IDF=/portable-cygwin/session-id
 if [ "$ID" != "$(cat "$IDF")" ]; then
