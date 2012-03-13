@@ -28,6 +28,9 @@ Usage hints:
 - During install, cygwin\Cygwin.bat is created. It's not portable, so don't use it.
   Instead, use Cygwin-portable.bat to start a shell.
 
+- To install 1338 tools, type:
+  wget -O- http://1338.se/install | bash
+
 - Your home directory is /home, not /home/username.
   This way you're always at home whoever you happen to be.
 
