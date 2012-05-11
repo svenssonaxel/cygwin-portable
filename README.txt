@@ -53,6 +53,3 @@ Usage hints:
   - Cygwin-portable-setup.bat (shortcut to cygwin\portable-cygwin\Setup.bat)
   - autorun.inf (will give your USB drive a cygwin icon if placed in the drive root)
   - cygwin\Packages (contains temporary files downloaded during installation)
-
-- Certain combinations of antivirus software and older windows platforms may cause bash to crash.
-  Switching or temporarily inactivating the antivirus software may solve the problem.

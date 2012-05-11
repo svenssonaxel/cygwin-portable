@@ -1,2 +1,0 @@
-#!/bin/bash
-if [ -e /bin/mintty.exe ]; then cmd /c start bin\\mintty.exe -; else /bin/bash --login -i; fi
