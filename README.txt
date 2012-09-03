@@ -53,3 +53,4 @@ Usage hints:
   - Cygwin-portable-setup.bat (shortcut to cygwin\portable-cygwin\Setup.bat)
   - autorun.inf (will give your USB drive a cygwin icon if placed in the drive root)
   - cygwin\Packages (contains temporary files downloaded during installation)
+  - README.txt (this file)
