@@ -3,7 +3,7 @@
 cd %~dp0
 cd ..
 chcp > portable-cygwin\session-chcp
-bin\bash.exe /portable-cygwin/session-init
+bin\bash.exe -i /portable-cygwin/session-init
 if exist bin\mintty.exe goto minttyexists
 goto minttydoesntexist
 :minttyexists

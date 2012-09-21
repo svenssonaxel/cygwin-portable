@@ -9,5 +9,17 @@ mkpasswd -l -c | sed -r 's/^(.*\:)[^:]*(\:[^:]*)$/\1\/home\2/' > /etc/passwd || 
 echo writing /etc/group
 mkgroup -l -c > /etc/group || ID=-
 echo setting up special paths in background
-(/portable-cygwin/setup-special-paths && echo "$ID" > "$IDF";) &
+(
+l=/sf
+rm -rf $l /parent
+ln -s "$(cygpath -u "$(dirname "$(cygpath -w /)")")" /parent
+mkdir -p $l
+cd $l
+cat /portable-cygwin/special-paths |
+while read a b; do
+t="$(cygpath -F $a)"
+[ "$(echo "$t"|grep -Fc /)" == 1 -a '!' -e "$4" ] && ln -s "$t" "$b"
+done 2> /dev/null
+echo "$ID" > "$IDF"
+) &
 fi
