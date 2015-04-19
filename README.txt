@@ -8,8 +8,6 @@ You can install it on a USB drive, take it to another computer/os/user/path, and
 
 Installation:
 
-- Download http://cygwin.com/setup.exe and place it in the cygwin\portable-cygwin directory.
-
 - Make sure there are no spaces or other odd characters in the path to portable-cygwin.
 
 - Run Cygwin-portable-setup.bat to start the installation with correct settings.
