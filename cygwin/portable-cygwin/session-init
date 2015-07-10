@@ -1,25 +1,36 @@
 #!/bin/bash
 PATH="/usr/bin:$PATH"
 ID="$USERNAME@$USERDOMAIN;$USERPROFILE;$(cygpath -w /)"
-IDF=/portable-cygwin/session-id
-if [ "$ID" != "$(cat "$IDF")" ]; then
-echo - > "$IDF"
+IDF="/portable-cygwin/dynamic/$(echo "$ID"|sed -r 's/[\\/]/|/g')"
+mkdir -p "$IDF"
+CUR=/portable-cygwin/cur
+n () { "$@" 2> /dev/null; }
+l () { n rm "$1"; ln -s "$2" "$1"; }
+c () { n rm "$1"; cp "$2" "$1"; }
+if [ "$ID" != "$(n cat "$CUR/session-id")" ]; then
+l $CUR "$IDF"
+if [ "$ID" != "$(n cat "$CUR/session-id")" ]; then
 echo writing /etc/passwd
-mkpasswd -l -c | sed -r 's/^(.*\:)[^:]*(\:[^:]*)$/\1\/home\2/' > /etc/passwd || ID=-
+mkpasswd -l -c | sed -r 's/^(.*\:)[^:]*(\:[^:]*)$/\1\/home\2/' > "$CUR/passwd" || ID=-
 echo writing /etc/group
-mkgroup -l -c > /etc/group || ID=-
+mkgroup -l -c > "$CUR/group" || ID=-
 echo setting up special paths in background
 (
-l=/sf
-rm -rf $l /parent
-ln -s "$(cygpath -u "$(dirname "$(cygpath -w /)")")" /parent
-mkdir -p $l
-cd $l
+l "$CUR/parent" "$(cygpath -u "$(dirname "$(cygpath -w /)")")"
+l /parent "$CUR/parent"
+sf="$CUR/sf"
+n rm -rf "$sf"
+mkdir -p "$sf"
+l /sf "$sf"
+cd "$sf"
 cat /portable-cygwin/special-paths |
 while read a b; do
 t="$(cygpath -F $a)"
-[ "$(echo "$t"|grep -Fc /)" == 1 -a '!' -e "$4" ] && ln -s "$t" "$b"
+[ "$(echo "$t"|grep -Fc /)" == 1 -a '!' -e "$4" ] && ln -s "$t" "$b" #todo: vad gör $4 här?
 done 2> /dev/null
-echo "$ID" > "$IDF"
+echo "$ID" > "$CUR/session-id"
 ) &
+fi
+c /etc/passwd "$CUR/passwd"
+c /etc/group "$CUR/group"
 fi
