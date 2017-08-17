@@ -17,7 +17,7 @@ if x%arch% == xunknown (
   pause
   exit )
 if x%arch% == xx86_64 (
-  if exist %cd%\portable-cygwin\setup-x86.exe set arch=x86 )
+  if exist %cd%\portable-cygwin\setup-x86.exe set arch=x86)
 if x%arch% == xx86_64 (
   cls
   echo This is a 64-bit system. In order to make the installation portable across both
