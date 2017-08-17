@@ -34,7 +34,7 @@ if not exist %cd%\portable-cygwin\setup-%arch%.exe (
   echo Try to download it manually, then run this setup again.
   pause
   exit )
-%cd%\portable-cygwin\setup-%arch%.exe -s ftp://ftp.sunet.se/pub/lang/cygwin -s ftp://ftp.cygwinports.org/pub/cygwinports -R %cd% -l %cd%\Packages -n -K %cd%\portable-cygwin\ports.gpg -BMP wget,rsync,libiconv,sed
+%cd%\portable-cygwin\setup-%arch%.exe -R %cd% -l %cd%\Packages -n -BMP wget,rsync,libiconv,sed
 pause
 rmdir %cd%\home
 del %cd%\Cygwin.bat
