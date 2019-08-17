@@ -1,6 +1,6 @@
 Cygwin made portable.
 
-You can install it on a USB drive, take it to another computer/os/user/path, and it still works.
+You can install it on a USB drive, take it to another computer/OS/user/path, and it still works.
 
 
 
@@ -13,7 +13,6 @@ Installation:
 - Run Cygwin-portable-setup.bat to start the installation with correct settings.
 
 - Follow the guided installation process as usual, choosing any additional packages you want.
-  (The cygwinports repository is included in case you want something from there.)
 
 - Done!
 
@@ -23,11 +22,7 @@ Installation:
 
 Usage hints:
 
-- During install, cygwin\Cygwin.bat is created. It's not portable, so don't use it.
-  Instead, use Cygwin-portable.bat to start a shell.
-
-- To install 1338 tools, type:
-  wget -O- http://1338.se/install | bash
+- Use Cygwin-portable.bat to start a shell.
 
 - Your home directory is /home, not /home/username.
   This way you're always at home whoever you happen to be.
