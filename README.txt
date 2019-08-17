@@ -33,6 +33,7 @@ Usage hints:
    ln -s /sf/desktop desktop
 
 - The /parent symlink points to the parent of the cygwin install folder.
+  This is also updated as you move around.
 
 - If you set up servers like sshd, be sure to know what you're doing.
   Installing windows services that depend on a drive you'll remove in a minute is usually not a good idea.
@@ -40,10 +41,23 @@ Usage hints:
   To do this, close all cygwin processes and use the windows GUI to copy/paste.
 
 - Use Cygwin-portable-setup.bat to add/remove packages.
+  If the setup program complains about being out of date, you may update it this way:
+  - Cancel the installation
+  - Delete cygwin\portable-cygwin\setup-*.exe
+  - Start Cygwin-portable-setup.bat again
 
 - These files are safe to delete if you don't want them:
-  - Cygwin-portable.bat (shortcut to cygwin\portable-cygwin\Cygwin.bat)
-  - Cygwin-portable-setup.bat (shortcut to cygwin\portable-cygwin\Setup.bat)
-  - autorun.inf (will give your USB drive a cygwin icon if placed in the drive root)
-  - cygwin\Packages (contains temporary files downloaded during installation)
-  - README.txt (this file)
+  - Cygwin-portable.bat
+    (Shortcut to cygwin\portable-cygwin\Cygwin.bat)
+  - Cygwin-portable-setup.bat
+    (Shortcut to cygwin\portable-cygwin\Setup.bat)
+  - autorun.inf
+    (Will give your USB drive a cygwin icon if placed in the drive root)
+  - cygwin\Packages
+    (This folder contains temporary files downloaded during installation)
+  - README.txt
+    (This file)
+  - cygwin\portable-cygwin\setup-x86.exe
+    (Will be re-downloaded automatically if/when needed)
+  - cygwin\portable-cygwin\setup-x86_64.exe
+    (Will be re-downloaded automatically if/when needed)
