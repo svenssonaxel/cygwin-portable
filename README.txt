@@ -54,10 +54,16 @@ Usage hints:
   - autorun.inf
     (Will give your USB drive a cygwin icon if placed in the drive root)
   - cygwin\Packages
-    (This folder contains temporary files downloaded during installation)
+    (Temporary files downloaded during installation)
   - README.txt
     (This file)
-  - cygwin\portable-cygwin\setup-x86.exe
+  - cygwin\portable-cygwin\setup-*.exe
     (Will be re-downloaded automatically if/when needed)
-  - cygwin\portable-cygwin\setup-x86_64.exe
-    (Will be re-downloaded automatically if/when needed)
+
+- These files are safe to delete when no cygwin process is running:
+  - cygwin\parent
+  - cygwin\sf
+  - cygwin\portable-cygwin\dynamic
+  - cygwin\portable-cygwin\cur
+  - cygwin\portable-cygwin\session-chcp
+  - cygwin\portable-cygwin\session-id
