@@ -8,7 +8,7 @@ You can install it on a USB drive, take it to another computer/OS/user/path, and
 
 Installation:
 
-- Make sure there are no spaces or other odd characters in the path to portable-cygwin.
+- Make sure there are no spaces or other odd characters in the path to cygwin-portable.
 
 - Run Cygwin-portable-setup.bat to start the installation with correct settings.
 
@@ -43,27 +43,27 @@ Usage hints:
 - Use Cygwin-portable-setup.bat to add/remove packages.
   If the setup program complains about being out of date, you may update it this way:
   - Cancel the installation
-  - Delete cygwin\portable-cygwin\setup-*.exe
+  - Delete cygwin\cygwin-portable\setup-*.exe
   - Start Cygwin-portable-setup.bat again
 
 - These files are safe to delete if you don't want them:
   - Cygwin-portable.bat
-    (Shortcut to cygwin\portable-cygwin\Cygwin.bat)
+    (Shortcut to cygwin\cygwin-portable\Cygwin.bat)
   - Cygwin-portable-setup.bat
-    (Shortcut to cygwin\portable-cygwin\Setup.bat)
+    (Shortcut to cygwin\cygwin-portable\Setup.bat)
   - autorun.inf
     (Will give your USB drive a cygwin icon if placed in the drive root)
   - cygwin\Packages
     (Temporary files downloaded during installation)
   - README.txt
     (This file)
-  - cygwin\portable-cygwin\setup-*.exe
+  - cygwin\cygwin-portable\setup-*.exe
     (Will be re-downloaded automatically if/when needed)
 
 - These files are safe to delete when no cygwin process is running:
   - cygwin\parent
   - cygwin\sf
-  - cygwin\portable-cygwin\dynamic
-  - cygwin\portable-cygwin\cur
-  - cygwin\portable-cygwin\session-chcp
-  - cygwin\portable-cygwin\session-id
+  - cygwin\cygwin-portable\dynamic
+  - cygwin\cygwin-portable\cur
+  - cygwin\cygwin-portable\session-chcp
+  - cygwin\cygwin-portable\session-id

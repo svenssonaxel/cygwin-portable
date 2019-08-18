@@ -28,10 +28,10 @@ if %arch% == unknown (
 
 rem Find out what architecture was previously chosen
 set ac=none
-if exist %cd%\portable-cygwin\archchosen-x86_64 (
+if exist %cd%\cygwin-portable\archchosen-x86_64 (
   set ac=x86_64
 )
-if exist %cd%\portable-cygwin\archchosen-x86 (
+if exist %cd%\cygwin-portable\archchosen-x86 (
   set ac=x86
 )
 
@@ -60,20 +60,20 @@ if %ac% == x86_64 (
 )
 
 rem Save choice of architecture
-echo .> %cd%\portable-cygwin\archchosen-%ac%
+echo .> %cd%\cygwin-portable\archchosen-%ac%
 
 rem Download installer if it does not exist
-if exist %cd%\portable-cygwin\setup-%ac%.exe (
+if exist %cd%\cygwin-portable\setup-%ac%.exe (
   echo Found existing installer for %ac%.
 ) else (
   echo Downloading installer
-  wscript portable-cygwin\dl.vbs https://cygwin.com/setup-%ac%.exe portable-cygwin\setup-%ac%.exe
+  wscript cygwin-portable\dl.vbs https://cygwin.com/setup-%ac%.exe cygwin-portable\setup-%ac%.exe
 )
 
 rem Refuse to continue without installer
-if not exist %cd%\portable-cygwin\setup-%ac%.exe (
+if not exist %cd%\cygwin-portable\setup-%ac%.exe (
   cls
-  echo Failed to download http://cygwin.com/setup-%ac%.exe to folder %cd%\portable-cygwin
+  echo Failed to download http://cygwin.com/setup-%ac%.exe to folder %cd%\cygwin-portable
   echo Try to download it manually, then run this setup again.
   pause
   exit
@@ -81,7 +81,7 @@ if not exist %cd%\portable-cygwin\setup-%ac%.exe (
 
 rem Run setup
 echo Running installer
-%cd%\portable-cygwin\setup-%ac%.exe -R %cd% -l %cd%\Packages -n -BMP wget,rsync,libiconv,sed
+%cd%\cygwin-portable\setup-%ac%.exe -R %cd% -l %cd%\Packages -n -BMP wget,rsync,libiconv,sed
 pause
 
 rem Delete unneeded files created by installer

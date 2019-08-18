@@ -6,10 +6,10 @@ cd %~dp0
 cd ..
 
 rem Remember active codepage
-chcp > portable-cygwin\session-chcp
+chcp > cygwin-portable\session-chcp
 
 rem Run session initialization script
-bin\bash.exe -i /portable-cygwin/session-init
+bin\bash.exe -i /cygwin-portable/session-init
 
 rem Use mintty if it exists, otherwise cmd
 if exist bin\mintty.exe goto minttyexists

@@ -1,1 +1,1 @@
-@%~dp0cygwin\portable-cygwin\Cygwin.bat
+@%~dp0cygwin\cygwin-portable\Cygwin.bat

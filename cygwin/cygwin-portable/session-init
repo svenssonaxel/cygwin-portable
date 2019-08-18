@@ -32,7 +32,7 @@ mksf() {
 }
 # Function for creating all links to special folders, in the current directory.
 setup-special-folders() {
-	cat /portable-cygwin/special-paths | (
+	cat /cygwin-portable/special-paths | (
 		while read sf_num sf_name; do
 
 			# Create links concurrently.
@@ -44,7 +44,7 @@ setup-special-folders() {
 	) | (
 
 		# Find out the number of links to be created.
-		nofsf=$(grep -Fc "" /portable-cygwin/special-paths)
+		nofsf=$(grep -Fc "" /cygwin-portable/special-paths)
 		let i=0
 
 		# Print progress for every line printed by mksf.
@@ -60,11 +60,11 @@ setup-special-folders() {
 ID="$USERNAME@$USERDOMAIN;$USERPROFILE;$(cygpath -w /)"
 
 # A path for caching information about the session context.
-IDF="/portable-cygwin/dynamic/$(echo "$ID"|sed -r 's/[\\/]/|/g')"
+IDF="/cygwin-portable/dynamic/$(echo "$ID"|sed -r 's/[\\/]/|/g')"
 mkdir -p "$IDF"
 
 # $CUR is (or will be) a symlink to the session context folder.
-CUR=/portable-cygwin/cur
+CUR=/cygwin-portable/cur
 
 # $CUR/session-id exists and has $ID as contents if session is already initialized correctly
 # First test whether we need to do anything.
