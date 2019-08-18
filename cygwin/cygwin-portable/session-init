@@ -32,7 +32,7 @@ mksf() {
 }
 # Function for creating all links to special folders, in the current directory.
 setup-special-folders() {
-	cat /cygwin-portable/special-paths | (
+	cat /cygwin-portable/special-folders | (
 		while read sf_num sf_name; do
 
 			# Create links concurrently.
@@ -44,16 +44,16 @@ setup-special-folders() {
 	) | (
 
 		# Find out the number of links to be created.
-		nofsf=$(grep -Fc "" /cygwin-portable/special-paths)
+		nofsf=$(grep -Fc "" /cygwin-portable/special-folders)
 		let i=0
 
 		# Print progress for every line printed by mksf.
 		while read; do
 			let i=$i+1
-			echo -ne "\e7Creating links to special paths ($i/$nofsf)\e8"
+			echo -ne "\e7Creating links to special folders ($i/$nofsf)\e8"
 		done
 	)
-	echo -e '\nDone creating links to special paths'
+	echo -e '\nDone creating links to special folders'
 }
 
 # An identifier for the session context.
